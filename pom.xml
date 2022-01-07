@@ -27,6 +27,13 @@
     </dependency>
   </dependencies>
 
+  <pluginRepositories>
+    <pluginRepository>
+			<id>rzymek-snapshots</id>
+			<url>https://github.com/rzymek/repository/raw/master/snapshots</url>
+		</pluginRepository>
+  </pluginRepositories>
+
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -69,6 +76,19 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+				<groupId>watcher</groupId>
+				<artifactId>watcher-maven-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<configuration>
+					<watch>
+						<param>
+							<on>pom.xml</on>
+							<run>clean war:inplace eclipse:eclipse</run>
+						</param>
+					</watch>
+				</configuration>
+			</plugin>
       </plugins>
     </pluginManagement>
   </build>
