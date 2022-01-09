@@ -17,12 +17,8 @@ public class Day1 {
     }
 
     public int getDepthIncreases() {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(file)) {
             return countDepthIncreases(scanner);
-        } finally {
-            scanner.close();
         }
     }
 
@@ -32,8 +28,7 @@ public class Day1 {
 
         while (scanner.hasNextInt()) {
             int currentDepth = scanner.nextInt();
-            if (depthIncreased(previousDepth, currentDepth))
-                depthIncrements++;
+            if (depthIncreased(previousDepth, currentDepth)) depthIncrements++;
             previousDepth = currentDepth;
         }
         return depthIncrements;
